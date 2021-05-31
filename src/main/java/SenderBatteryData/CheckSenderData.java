@@ -27,7 +27,6 @@ public class CheckSenderData {
 		}
 		log.setMessage("Data sent in stream is less that 10 values");
 		return false;
-
 	}
 
 }
