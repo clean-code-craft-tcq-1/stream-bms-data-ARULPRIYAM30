@@ -27,9 +27,9 @@ public class BMSValidator {
 
 		List<Float> filteredParamList = separateLastFiveValues(paramList);
 		Float sum = filteredParamList.parallelStream().reduce(0.0F, Float::sum);
-		Float average = sum / filteredParamList.size();
-
-		return average;
+		float average = Math.round(sum / filteredParamList.size() * 100.0F);
+		
+		return (float) (average / 100.0F);
 	}
 
 	public static boolean isValidList(List<Float> paramList) {
