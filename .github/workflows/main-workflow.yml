@@ -27,4 +27,4 @@ jobs:
     - name: Build and main class
       run: mvn -f ./pom.xml compile exec:java -Dexec.mainClass="SenderBatteryData.InputSender"
     - name: Build receiver main class
-      run: mvn -f ./pom.xml compile exec:java -Dexec.mainClass="receiver.service.BMSReceiverService" -Dexec.args="34;63;0.2 37;23;0.6 21;56;0.2 27;37;0.5 8;79;0.3"
+      run: mvn -f ./pom.xml compile exec:java -Dexec.mainClass="SenderBatteryData.InputSender" | mvn -f ./pom.xml compile exec:java -Dexec.mainClass="receiver.service.BMSReceiverService"

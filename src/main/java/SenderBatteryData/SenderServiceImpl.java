@@ -32,7 +32,6 @@ public class SenderServiceImpl implements SenderService {
 
 	@Override
 	public void sendReadingsToConsole() {
-		log.setMessage("Temperature;SOC;ChargeRate");
 		for (SenderParam sendData : streamData) {
 			log.setMessage(sendData.temperature + ";" + sendData.stateOfCharge + ";" + sendData.chargeRate);
 		}
