@@ -24,6 +24,8 @@ jobs:
         java-version: 1.8
     - name: Build and Test
       run: mvn -f pom.xml test
+    - name: Build Test and Generate Coverage
+      run: mvn -f pom.xml test jacoco:report
     - name: Build Sender and Receiver Packages
       run:  mvn -B package --file pom.xml -Dmaven.test.skip=true
     - name: Pipe sender and receiver jars
