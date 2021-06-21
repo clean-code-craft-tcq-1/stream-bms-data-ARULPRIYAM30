@@ -1,8 +1,10 @@
 package receiver.service;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import receiver.constant.BMSFactor;
 
@@ -11,19 +13,18 @@ public class BMSReceiverService {
 	private static BMSFactor bmsFactor = new BMSFactor();
 
 	public static void main(String[] args) {
-		
-		if (args.length > 0) {
-			for (String senderData : args) {
-				System.out.println(senderData);
-			}
-		}
 
-		Scanner inputData = new Scanner(System.in);
+		BufferedReader inputData = new BufferedReader(new InputStreamReader(System.in));
 		String arg;
 		List<String> argsList = new ArrayList<>();
 
-		while ((arg = inputData.nextLine()) != null) {
-			argsList.add(arg);
+		try {
+			while ((arg = inputData.readLine()) != null) {
+				System.out.println(arg);
+				argsList.add(arg);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 		List<Float> temperatureList = BMSReceiver.getParamsFromConsoleArguments(argsList, bmsFactor.TEMPERATURE);
@@ -33,8 +34,6 @@ public class BMSReceiverService {
 		BMSReceiver.calculateMinMaxAvgTemperature(temperatureList);
 		BMSReceiver.calculateMinMaxAvgSoc(socList);
 		BMSReceiver.calculateMinMaxAvgChargeRate(chargeRateList);
-
-		inputData.close();
 	}
 
 }

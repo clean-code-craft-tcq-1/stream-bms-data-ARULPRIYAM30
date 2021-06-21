@@ -26,5 +26,5 @@ jobs:
       run: mvn -f pom.xml test
     - name: Build Sender and Receiver Packages
       run:  mvn -B package --file pom.xml -Dmaven.test.skip=true
-    - name: Run sender and receiver jars
+    - name: Pipe sender and receiver jars
       run: java -jar target/BMSSender.jar | java -jar target/BMSReceiver.jar
