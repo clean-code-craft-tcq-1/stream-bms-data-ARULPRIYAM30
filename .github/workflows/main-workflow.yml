@@ -26,6 +26,12 @@ jobs:
       run: mvn -f pom.xml test
     - name: Build Test and Generate Coverage
       run: mvn -f pom.xml test jacoco:report
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage
+        path: ./target/site/jacoco
+        retention-days: 1
     - name: Build Sender and Receiver Packages
       run:  mvn -B package --file pom.xml -Dmaven.test.skip=true
     - name: Pipe sender and receiver jars
