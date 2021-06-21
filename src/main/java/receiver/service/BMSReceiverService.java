@@ -11,6 +11,12 @@ public class BMSReceiverService {
 	private static BMSFactor bmsFactor = new BMSFactor();
 
 	public static void main(String[] args) {
+		
+		if (args.length > 0) {
+			for (String senderData : args) {
+				System.out.println(senderData);
+			}
+		}
 
 		Scanner inputData = new Scanner(System.in);
 		String arg;
