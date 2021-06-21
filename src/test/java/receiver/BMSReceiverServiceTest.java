@@ -33,7 +33,7 @@ public class BMSReceiverServiceTest {
 
 	@Test
 	public void givenArgsAsEmpty_whenGetParamsFromConsoleArguments_thenReturnEmptyList() {
-		String[] args = new String[0];
+		List<String> args = new ArrayList<>();
 		assertEquals(0, BMSReceiver.getParamsFromConsoleArguments(args, bmsFactor.TEMPERATURE).size());
 		assertEquals(0, BMSReceiver.getParamsFromConsoleArguments(args, bmsFactor.SOC).size());
 		assertEquals(0, BMSReceiver.getParamsFromConsoleArguments(args, bmsFactor.CHARGE_RATE).size());
@@ -41,7 +41,9 @@ public class BMSReceiverServiceTest {
 
 	@Test
 	public void givenArgsAsValid_whenGetParamsFromConsoleArguments_thenReturnValidList() {
-		String[] args = { "1;21;0.5", "21;76;0.5" };
+		List<String> args = new ArrayList<>();
+		args.add("1;21;0.5");
+		args.add("21;76;0.5");
 		assertTrue(BMSReceiver.getParamsFromConsoleArguments(args, bmsFactor.TEMPERATURE).size() > 0);
 		assertTrue(BMSReceiver.getParamsFromConsoleArguments(args, bmsFactor.SOC).size() > 0);
 		assertTrue(BMSReceiver.getParamsFromConsoleArguments(args, bmsFactor.CHARGE_RATE).size() > 0);

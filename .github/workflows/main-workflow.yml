@@ -27,4 +27,4 @@ jobs:
     - name: Build Sender and Receiver Packages
       run:  mvn -B package --file pom.xml -Dmaven.test.skip=true
     - name: Run sender and receiver jars
-      run: java -jar target/BMSStreamSender-0.0.1-SNAPSHOT-sender.jar | java -jar target/BMSStreamSender-0.0.1-SNAPSHOT-receiver.jar
+      run: java -jar target/BMSSender.jar | java -jar target/BMSReceiver.jar

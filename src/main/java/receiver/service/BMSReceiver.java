@@ -69,9 +69,9 @@ public class BMSReceiver {
 		return true;
 	}
 
-	public static List<Float> getParamsFromConsoleArguments(String[] params, String paramType) {
+	public static List<Float> getParamsFromConsoleArguments(List<String> params, String paramType) {
 		List<Float> paramList = new ArrayList<>();
-		if (params.length > 0) {
+		if (params.size() > 0) {
 			for (String senderData : params) {
 				String batteryParams[] = senderData.split(";");
 				paramList.add(Float.valueOf(batteryParams[batteryParamsMap.get(paramType)]));
